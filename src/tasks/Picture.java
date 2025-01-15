@@ -1,39 +1,41 @@
 package tasks;
 
-import figures.DefParabol;
-
 public class Picture {
-    public final Parabol P1; // ОБЪЯВЛЕНИЕ ГРАФИКОВ
-    public final Line L;
+    public final DefParabol P1; // ОБЪЯВЛЕНИЕ ГРАФИКОВ
+    public final DefParabol P2;
+    public final Circle C1;
+    public final Circle C2;
+    public final Rectangle R;
 
-    public Picture(Parabol p1, Line l) {
+
+
+    public Picture(tasks.DefParabol p1, tasks.DefParabol p2, Circle c1, Circle c2, Rectangle r) {
         P1 = p1;
-        L = l;
+        P2 = p2;
+        C1 = c1;
+        C2 = c2;
+        R = r;
     }
 
-    public SimpleColor getColor(double x, double y){ // ЛОГИКА РАСПРЕДЕЛЕНИЯ ЦВЕТОВ
-        if(P1.InParabola(x, y) && L.UpLine(x, y) && x < 0 && y < 0){
-            return SimpleColor.GREEN;
+
+    public SimpleColor getColor(double x, double y) { // ЛОГИКА РАСПРЕДЕЛЕНИЯ ЦВЕТОВ
+        if (P1.InDParabola(x, y) && !P2.InDParabola(x, y)) {
+            return SimpleColor.WHITE;
+        } else if (P1.InDParabola(x, y) && P2.InDParabola(x, y)) {
+            return SimpleColor.YELLOW;
         }
-        else if (P1.OnParabola(x, y) || L.OnLine(x, y) || (x == -3 && (y >= -4 && y <= 0) || (y == -4 && (x >= -3 && x <= 0)))) {
+        else if (P1.OnDParabola(x, y) || P2.OnDParabola(x, y) || R.OnRectangle(x, y) || C1.OnCircle(x, y) || C2.OnCircle(x, y)) {
             return SimpleColor.BLUE;
         }
-        else if (P1.InParabola(x, y) && L.DownLine(x, y) && y < 0 && x > -3){
+        else if (R.InRectangle(x, y) && !C1.InCircle(x, y)) {
+            return SimpleColor.GRAY;
+        }
+        else if (C1.InCircle(x, y) && R.InRectangle(x, y)) {
             return SimpleColor.WHITE;
-        }
-        else if(L.UpLine(x, y) && !P1.InParabola(x, y) && x < 0 && y > -4){
-            return SimpleColor.ORANGE;
-        }
-        else if(P1.InParabola(x, y) && x != 0 && y != 0){
-            return SimpleColor.WHITEBLUE;
-        }
-        else if(L.UpLine(x, y) && y > 0){
-            return SimpleColor.WHITEBLUE;
-        }
-        else if(x > -3 && (y > -4 && y < 0) || (y == -4 && (x > -3 && x < 0))){
-            return SimpleColor.GREEN;
+        } else if (C2.InCircle(x, y)) {
+            return SimpleColor.GRAY;
         }
         else if(x == 0 || y == 0){return SimpleColor.BLACK;}
-        return SimpleColor.GREEN;
+        return SimpleColor.WHITEBLUE;
     }
 }

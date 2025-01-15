@@ -3,9 +3,12 @@ package tasks;
 import java.util.Scanner;
 
 public class Main {
-    public static final Parabol P1 = new Parabol(-4, 0, 1); //ЗАДАЁМ ЗНАЧЕНИЯ ДЛЯ ГРАФИКОВ
-    public static final Line L = new Line(-2, 0, -2);
-    public static final Picture picture = new Picture(P1, L);
+    public static final DefParabol P1 = new DefParabol(1, 4.5, 0.5); //ЗАДАЁМ ЗНАЧЕНИЯ ДЛЯ ГРАФИКОВ
+    public static final DefParabol P2 = new DefParabol(-8, 22, 1);
+    public static final Circle C1 = new Circle(5, 0, 2.5);
+    public static final Circle C2 = new Circle(-7, -4, 2);
+    public static final Rectangle R = new Rectangle();
+    public static final Picture picture = new Picture(P1, P2, C1, C2, R);
 
     public static void main(String[] args) { //КРАСИВЫЙ ВЫВОД
         System.out.println("Введите две координаты точки в диапазоне от -10 до 10");
