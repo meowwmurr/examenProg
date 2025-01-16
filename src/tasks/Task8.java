@@ -11,20 +11,20 @@ public class Task8 {
         System.out.println("Исходная матрица:");
         printMatrix(matrix);
 
-        swap(matrix);
+        matrix = swap(matrix);
 
         System.out.println("\nПосле переноса всех столбцов с суммой < 0 в конец:");
         printMatrix(matrix);
     }
 
-    /**
-     * Находит все столбцы с суммой < 0,
-     * переставляет их в "хвост" матрицы,
-     * сохраняя взаимный порядок как
-     * "сначала все столбцы с sum >= 0 (в исходном порядке),
-     *  затем все столбцы с sum < 0 (в исходном порядке)".
-     */
-    public static void swap(int[][] matrix) {
+
+//     * Находит все столбцы с суммой < 0,
+//     * переставляет их в "хвост" матрицы,
+//     * сохраняя взаимный порядок как
+//     * "сначала все столбцы с sum >= 0 (в исходном порядке),
+//     *  затем все столбцы с sum < 0 (в исходном порядке)".
+//
+    public static int[][] swap(int[][] matrix) {
 
         // Подсчитаем сумму каждого столбца
         int[] colSums = new int[matrix[0].length];
@@ -67,10 +67,7 @@ public class Task8 {
             }
         }
 
-        // Переписываем newMatrix обратно в matrix
-        for (int i = 0; i < matrix.length; i++) {
-            System.arraycopy(newMatrix[i], 0, matrix[i], 0, matrix[0].length);
-        }
+        return newMatrix;
     }
 
     // Печать матрицы
