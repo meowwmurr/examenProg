@@ -10,6 +10,7 @@ public class Number_6_4 {
                 {10, 66, 2, 6},
                 {-8, 21, 15, 84}
         };
+        System.out.println(indexOf(matrix));
 
     }
 
