@@ -1,6 +1,5 @@
 package examination;
 
-import java.util.Arrays;
 
 public class Number_6_4 {
     public static void main(String[] args) {
