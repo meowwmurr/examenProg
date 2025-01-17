@@ -18,9 +18,9 @@ public class Number_5_4 {
 
     public static int sumSimpleNumbers(int[] a) {
         int sum = 0;
-        for(int i = 0; i < a.length; i++){
-            if(isSimpleNumber(a[i])){
-                sum += a[i];
+        for (int j : a) {
+            if (isSimpleNumber(j)) {
+                sum += j;
             }
         }
         return sum;
