@@ -11,11 +11,15 @@ public class Main {
     public static final Picture picture = new Picture(P1, P2, L, L2, R);
 
     public static void main(String[] args) { //КРАСИВЫЙ ВЫВОД
-        System.out.println("Введите две координаты точки в диапазоне от -10 до 10");
-        double x = readCoordinates("X");
-        double y = readCoordinates("Y");
-        SimpleColor color = picture.getColor(x, y);
-        printColor(x, y, color);
+        if (Test.checkCorrectnessOfGetColor()) {
+            System.out.println("Введите две координаты точки в диапазоне от -10 до 10");
+            double x = readCoordinates("X");
+            double y = readCoordinates("Y");
+
+            SimpleColor color = picture.getColor(x, y);
+
+            printColor(x, y, color);
+        }
     }
 
     public static double readCoordinates(String text) {
